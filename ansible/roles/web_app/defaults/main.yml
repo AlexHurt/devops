@@ -1,0 +1,8 @@
+app_title: "app_python"
+ext_port: 80
+int_port: 5000
+docker_image:
+  reg: "lexasmall"
+  name: "app_python"
+  tag: "latest"
+base_path: "/opt/web_app"
