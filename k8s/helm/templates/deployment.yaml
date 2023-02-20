@@ -37,21 +37,13 @@ spec:
             - name: http
               containerPort: 5000
               protocol: TCP
-              env:
-                - name: NAME
-                  valueFrom:
-                    secretKeyRef:
-                      name: secrets1
-                      key: user
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
+      env:
+        - name: NAME
+          valueFrom:
+            secretKeyRef:
+               name: secrets1
+               key: name
+      resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
