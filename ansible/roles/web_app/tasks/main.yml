@@ -1,0 +1,22 @@
+- name: Deploying application
+  block:
+  - name: Create a folder
+    ansible.builtin.file:
+      path: "{{ base_path }}"
+      state: directory
+      mode: '0755'
+
+  - name: Docker installation
+    ansible.builtin.template:
+      src: docker-compose.yml
+      dest: "{{base_path}}/docker-compose.yml"
+      owner: root
+      group: root
+      mode: '600'
+
+  - name: Run docker
+    community.docker.docker_compose:
+      project_src: "{{base_path}}"
+      state: present
+      pull: true
+  tags: ["web_app"]
