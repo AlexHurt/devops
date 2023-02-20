@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab2app
+  labels:
+    app: lab2app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab2app
+  template:
+    metadata:
+      labels:
+        app: lab2app
+    spec:
+      containers:
+      - name: lab2app
+        image: lexasmall/lab2app:latest
+        ports:
+        - containerPort: 8000
