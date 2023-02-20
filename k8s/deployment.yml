@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lab2app
+  name: lab2app-deploy
   labels:
     app: lab2app
 spec:
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: lab2app
-        image: lexasmall/lab2app:latest
+        image: lexasmall/lab2app
         ports:
         - containerPort: 8000
