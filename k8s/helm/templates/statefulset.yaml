@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "helm.fullname" . }}
   labels:
@@ -41,7 +41,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: config-volume
-              mountPath: /config.json
+              mountPath: config/config.json
               subPath: config.json
       volumes:
         - name: config-volume
