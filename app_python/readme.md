@@ -31,5 +31,10 @@ To build this app you need
 - after all the process completes, type `docker run lab2`
 - you can see the result in the console from docker image: `curl http://localhost:5000`
 
+##### Tests
+
+This app contains several unit tests for checking reliability
+That tests are located in the server_test.py file
+
 ##### Contact
 [a.smolyakov@innopolis.university](mailto:a.smolyakov@innopolis.university)
