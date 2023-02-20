@@ -14,7 +14,7 @@ x-logging:
 
 services:
   app_python:
-    image: tiny0wizard/app_python:latest
+    image: lexasmall/app_python:latest
     ports:
       - "5000:5000"
     networks:
