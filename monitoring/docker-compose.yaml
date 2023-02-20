@@ -14,7 +14,7 @@ x-logging:
 
 services:
   app_python:
-    image: lexasmall/app_python:latest
+    image: lexasmall/lab2app:latest
     ports:
       - "5000:5000"
     networks:
@@ -44,3 +44,22 @@ services:
     networks:
       - loki
     logging: *logging
+  
+  prometheus:
+    image: prom/prometheus:v2.39.1
+    container_name: monitoring.prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    restart: unless-stopped
+    expose:
+      - 9090
+    ports:
+      - "9090:9090"
+    healthcheck:
+      test: wget --no-verbose --spider http://localhost:9090/-/healthy || exit 1
+      interval: 10s
+      timeout: 2s
+      retries: 3
